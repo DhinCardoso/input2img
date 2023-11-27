@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Codhinator - Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+	<style>
+.dropbtn {
+  background-color: darkred;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+	border-radius: 10px;
+	width: 300px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: red;
+	
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 300px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+	
+	<style>
+		body {background-color: #E3E3E3;
+		text-align: center;}
+		
+		/* DEMO-SPECIFIC STYLES */
+.typewriter h1 {
+  color: darkgray;
+  font-family: 'Press Start 2P', cursive;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .1em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .1em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}</style>
+	
+</head>
+
+<body>
+	<div><img width="30%" src="img/codhinator_logo.gif"></div>
+	
+	<div class="typewriter">
+  <h1>Bem vindo ao Codhinator Tabajara©</h1>
+</div>
+	
+	<div class="clear">&nbsp;</div>
+<br/>
+	<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Publicações disponíveis</button>
+  <div id="myDropdown" class="dropdown-content">
+    	<a href="#">Ata Comef*</a>
+	  <a href="#">Boletim Regional</a>
+	  <a href="#">Copom Ata</a>
+	  <a href="#">Copom Taxa</a>
+	  <a href="#">Estatísticas Fiscais</a>
+	  <a href="#">Estatísticas Mercado aberto</a>
+	  <a href="demo.html">IPCA</a>
+	  <a href="#">Estatísticas setor externo</a>
+	  <a href="#">Focus</a>
+	  <a href="#">IBC-BR</a>
+	  <a href="#">IC-BR</a>
+	  <a href="#">Pix</a>
+	  <a href="#">Ranking Ouvidoria</a>
+	  <a href="#">Ranking Reclamações</a>
+
+	  
+  </div>
+</div>
+	<div class="clear">&nbsp;</div>
+<br/>
+	
+
+	
+	
+<script src="js/highcharts.js"></script> 
+<script src="js/html2canvas.min.js"></script> 
+<script src="js/jQuery.js"></script>
+
+	
+	
+	<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

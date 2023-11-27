@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IPCA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+	
+	<!-- CSS Highcharts 
+	<style type="text/css"> 
+		
+		/* Importando valores padroes */
+	@import "https://code.highcharts.com/css/highcharts.css";
+
+
+
+
+.highcharts-data-label {
+    font-weight: normal;
+}
+
+
+
+.highcharts-data-label text {
+    font-weight: bold;
+    font-size: 10px;
+}
+	</style> -->
+	
+	
+<style type="text/css">
+	
+	.highcharts-data-label text {
+    font-weight: bold;
+    font-size: 100px;
+}
+	
+#capture {
+		width: 1080px;
+	}	
+	
+#ipca_twitter {
+    width: 1080px;
+    height: 1350px;
+    background-image: url("bg/ipca_insta_bg.png");
+}
+#ipca_input {
+	background: none;
+    border: none;
+    color: #005A7B;
+    font-size: 124px;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 182px 0 0 618px;
+    width: 370px;
+    display: block;
+    float: left;
+}
+	
+	#ipca_last_value_percent{
+		font-size: 72px;
+	}
+#ipca_hs {
+    width: 1000px;
+    height: 660px;
+    padding: 25px 0 0 20px;
+}
+	
+.clear {
+    clear: both;
+}
+</style>
+
+	<style> /* Estilo externo do sistema */
+.dropbtn {
+  background-color: darkred;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+		border-radius: 10px;
+	width: 300px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+
+<body>
+	
+	<!--
+	<div class="clear">&nbsp;</div>
+<br/>
+	<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Publicações disponíveis</button>
+  <div id="myDropdown" class="dropdown-content">
+    	<a href="#">Ata Comef*</a>
+	  <a href="#">Boletim Regional</a>
+	  <a href="#">Copom Ata</a>
+	  <a href="#">Copom Taxa</a>
+	  <a href="#">Estatísticas Fiscais</a>
+	  <a href="#">Estatísticas Mercado aberto</a>
+	  <a href="demo.html">IPCA</a>
+	  <a href="#">Estatísticas setor externo</a>
+	  <a href="#">Focus</a>
+	  <a href="#">IBC-BR</a>
+	  <a href="#">IC-BR</a>
+	  <a href="#">Pix</a>
+	  <a href="#">Ranking Ouvidoria</a>
+	  <a href="#">Ranking Reclamações</a>
+
+	  
+  </div>
+</div>
+	<div class="clear">&nbsp;</div>
+<br/>
+-->
+	<!-- Quando lançar o Codhiunator remover esse comentário -->
+	
+<div id="capture">
+  <div id="ipca_twitter">
+    <div id="ipca_input">
+		<div id="ipca_last_value">4,82<span id="ipca_last_value_percent">%</span></div> <!-- Valor em destaque -->
+    </div>
+    <div id="ipca_hs"></div>
+  </div>
+</div>
+<div class="clear">&nbsp;</div>
+<br/>
+<input type="button" id="btnSave" value="Gerar IPCA" style=" height: 40px;"/>
+<div class="clear">&nbsp;</div>
+<br/>
+<div id="divSave"></div>
+	
+	
+<script src="js/highcharts.js"></script> 
+<script src="js/html2canvas.min.js"></script> 
+<script src="js/jQuery.js"></script>
+<script type="text/javascript">
+	
+	Highcharts.setOptions({
+    lang: {
+        decimalPoint: ','
+    }
+});
+	
+	
+Highcharts.chart('ipca_hs', {
+	
+	
+	
+	
+	chart: {
+		// styledMode: true,
+		
+		 backgroundColor: 'rgba(0,0,0,0)',
+		style: {
+            fontSize: '22px'
+        }
+        },
+	
+
+    title: {
+        text: ''
+    },
+
+
+    yAxis: {
+        title: {
+            text: '%',
+        },
+		labels: {
+                style: {
+                    fontSize:'16px'
+                }
+            }
+    },
+
+    xAxis: {
+        categories: ['Out 22', 'Nov 22', 'Dez 22','Jan 23','Fev 23','Mar 23','Abr 23','Mai 23','Jun 23','Jul 23','Ago 23','Set 23', 'Out 23'],
+		labels: {
+                style: {
+                    fontSize:'16px'
+                }
+            }
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+			animation: false,
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontSize: '18px'
+                }
+            }
+        },
+		
+		line: {
+            dataLabels: {
+                enabled: true
+            },
+            //enableMouseTracking: false
+        }
+    },
+
+    series: [{
+        name: 'IPCA',
+        data: [6.47, 5.90, 5.79, 5.77, 5.60, 4.65, 4.18, 3.94, 3.16, 3.99, 4.61, 5.19, 4.82],
+		showInLegend: false
+        }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+		</script> 
+<script>
+		//Função para chamar html2canvas
+
+	$(function() {
+		var canvasOn = 0;
+		var divSave = document.getElementById("divSave");
+		
+		$("#btnSave").click(function() { 
+			if(canvasOn === 0){
+				
+			html2canvas(document.querySelector("#capture")).then(canvas => {
+    divSave.appendChild(canvas)
+});	
+				
+//			html2canvas($("#widget"), {
+//				onrendered: function(canvas) {
+//					theCanvas = canvas;
+//					divSave.appendChild(canvas);
+//				}
+//			});
+			this.setAttribute('value','Remover IPCA');
+			canvasOn = 1;
+		
+		} else {
+					// Clean up 
+					while (divSave.firstChild) {
+						divSave.removeChild(divSave.firstChild);
+					}
+					this.setAttribute('value','Gerar IPCA');
+					canvasOn = 0;
+			}
+		});
+	});
+
+	</script>
+	
+	
+	<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
